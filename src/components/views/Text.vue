@@ -6,21 +6,7 @@ export default {
     components: {Card},
 
     methods: {
-        selectText() {
-            const target = this.$refs.targetElement;
-            const selection = window.getSelection();
 
-            if (document.body.createTextRange) {
-                const range = document.body.createTextRange();
-                range.moveToElementText(target);
-                range.select();
-            } else if (window.getSelection) {
-                const range = document.createRange();
-                range.selectNodeContents(target);
-                selection.removeAllRanges();
-                selection.addRange(range);
-            }
-        },
     },
     computed: {
         enc() {
@@ -89,7 +75,7 @@ export default {
                 <Card title="编码器" style="height: 500px">
                     <textarea v-model="msg" style="resize: none;width: 100%;height: 100px" ondragstart="return false;"/>
                     <div style="overflow-y: scroll !important;height: 300px">
-                        <p @click="selectText">{{ enc }}</p>
+                        <p>{{ enc }}</p>
                     </div>
                 </Card>
             </div>
